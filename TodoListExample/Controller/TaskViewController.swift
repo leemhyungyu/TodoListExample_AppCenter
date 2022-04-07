@@ -12,6 +12,7 @@ class TaskViewController: UIViewController {
     var todayList = [String]()
     var nextList = [String]()
     
+    var sectionHeader = ["Today", "Upcoming"]
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -43,6 +44,8 @@ extension TaskViewController: UITableViewDelegate {
 // MARK - UITableVIewDataSource
 extension TaskViewController: UITableViewDataSource {
     
+    // MARK - Cell
+    
     // section마다의 cell개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -57,5 +60,30 @@ extension TaskViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    
+    // MARK - Section
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            
+        return sectionHeader[section]
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let myLabel = UILabel()
+        
+        myLabel.frame = CGRect(x: 12, y: 8, width: 330, height: 40 )
+        myLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
+        let headerView = UIView()
+        headerView.addSubview(myLabel)
+        
+        return headerView
+    }
+    
 }
 
