@@ -72,10 +72,14 @@ extension TaskViewController: UITableViewDataSource {
         return sectionHeader[section]
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       
         let myLabel = UILabel()
-        
-        myLabel.frame = CGRect(x: 12, y: 8, width: 330, height: 40 )
+        myLabel.frame = CGRect(x: 12, y: 0, width: 330, height: 30)
         myLabel.font = UIFont.boldSystemFont(ofSize: 24)
         myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
         
@@ -84,6 +88,8 @@ extension TaskViewController: UITableViewDataSource {
         
         return headerView
     }
+    
+     
     
 }
 
