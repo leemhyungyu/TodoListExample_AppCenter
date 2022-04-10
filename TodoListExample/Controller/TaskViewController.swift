@@ -20,7 +20,6 @@ class TaskViewController: UIViewController {
         tableView.dataSource = self
         super.viewDidLoad()
         setup()
-        
     }
 }
 
@@ -28,6 +27,13 @@ extension TaskViewController {
     func setup() {
         let nibName = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "todoCell")
+        
+        // cell 사이의 구분선 없애기
+        tableView.separatorStyle = .none
+        
+        // footer 삭제.
+        tableView.sectionFooterHeight = 0
+        
     }
 }
 
@@ -57,7 +63,6 @@ extension TaskViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! TableViewCell
         cell.ListLabel.text = "👻 Weekly iOS Meeting"
         cell.ListLabel.sizeToFit()
-        
         return cell
     }
     
@@ -67,29 +72,24 @@ extension TaskViewController: UITableViewDataSource {
         return 2
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            
-        return sectionHeader[section]
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 35
+        return 40
     }
+ 
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
        
         let myLabel = UILabel()
         myLabel.frame = CGRect(x: 12, y: 0, width: 330, height: 30)
         myLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.text = sectionHeader[section]
         
         let headerView = UIView()
         headerView.addSubview(myLabel)
-        
         return headerView
     }
     
-     
-    
 }
+
 
