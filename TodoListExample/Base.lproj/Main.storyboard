@@ -32,7 +32,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" image="checkmark.circle.fill" catalog="system" id="Von-U1-BFp"/>
                     <connections>
-                        <outlet property="tableView" destination="HVj-7D-rMS" id="tVx-Qy-WiB"/>
+                        <outlet property="taskTableView" destination="HVj-7D-rMS" id="tVx-Qy-WiB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

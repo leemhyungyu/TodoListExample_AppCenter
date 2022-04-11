@@ -13,8 +13,10 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var DeleteBtn: UIButton!
     @IBOutlet weak var ListLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        setUp()
         // Initialization code
     }
 
@@ -23,5 +25,11 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+}
+
+extension TableViewCell {
+    func setUp() {
+        
+        self.selectionStyle = .none
+    }
 }

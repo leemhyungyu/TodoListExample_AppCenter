@@ -12,12 +12,11 @@ class TaskViewController: UIViewController {
     var todayList = [String]()
     var nextList = [String]()
     
-    var sectionHeader = ["Today", "Upcoming"]
-    @IBOutlet weak var tableView: UITableView!
+    var sectionHeader : [String] = ["Today", "Upcoming"]
+    @IBOutlet weak var taskTableView: UITableView!
     
     override func viewDidLoad() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        
         super.viewDidLoad()
         setup()
     }
@@ -25,14 +24,18 @@ class TaskViewController: UIViewController {
 
 extension TaskViewController {
     func setup() {
+        taskTableView.delegate = self
+        taskTableView.dataSource = self
+        
+        // taskTableView가 "TableViewCell"을 렌더링하게 설정
         let nibName = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: "todoCell")
+        taskTableView.register(nibName, forCellReuseIdentifier: "todoCell")
         
         // cell 사이의 구분선 없애기
-        tableView.separatorStyle = .none
+        taskTableView.separatorStyle = .none
         
         // footer 삭제.
-        tableView.sectionFooterHeight = 0
+        taskTableView.sectionFooterHeight = 0
         
     }
 }
@@ -60,7 +63,7 @@ extension TaskViewController: UITableViewDataSource {
     // cell에 대한 정보
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! TableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         cell.ListLabel.text = "👻 Weekly iOS Meeting"
         cell.ListLabel.sizeToFit()
         return cell

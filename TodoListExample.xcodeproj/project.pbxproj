@@ -16,7 +16,6 @@
 		2C40C69E27FEAE0D00AA536D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C40C69C27FEAE0D00AA536D /* LaunchScreen.storyboard */; };
 		2C40C6A927FEAE0D00AA536D /* TodoListExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40C6A827FEAE0D00AA536D /* TodoListExampleTests.swift */; };
 		2C40C6B427FEAE0D00AA536D /* TodoListExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40C6B327FEAE0D00AA536D /* TodoListExampleUITests.swift */; };
-		2C40C6C327FEC5AC00AA536D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40C6C227FEC5AC00AA536D /* SettingViewController.swift */; };
 		2CAFE9B427FEE76800C2E0CB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFE9B227FEE76800C2E0CB /* TableViewCell.swift */; };
 		2CAFE9B527FEE76800C2E0CB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFE9B327FEE76800C2E0CB /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		2C40C6AF27FEAE0D00AA536D /* TodoListExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C40C6B327FEAE0D00AA536D /* TodoListExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListExampleUITests.swift; sourceTree = "<group>"; };
 		2C40C6B527FEAE0D00AA536D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C40C6C227FEC5AC00AA536D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2CAFE9B227FEE76800C2E0CB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		2CAFE9B327FEE76800C2E0CB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,7 +139,6 @@
 		2C40C6C127FEAE3300AA536D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2C40C6C227FEC5AC00AA536D /* SettingViewController.swift */,
 				2C40C69227FEAE0B00AA536D /* TaskViewController.swift */,
 			);
 			path = Controller;
@@ -287,7 +284,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C40C6C327FEC5AC00AA536D /* SettingViewController.swift in Sources */,
 				2C40C69327FEAE0B00AA536D /* TaskViewController.swift in Sources */,
 				2C40C68F27FEAE0B00AA536D /* AppDelegate.swift in Sources */,
 				2CAFE9B427FEE76800C2E0CB /* TableViewCell.swift in Sources */,
