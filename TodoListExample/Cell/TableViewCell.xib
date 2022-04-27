@@ -32,6 +32,9 @@
                         <rect key="frame" x="345" y="14" width="20" height="22"/>
                         <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                         <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                        <connections>
+                            <action selector="deleteBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dvL-Q1-71x"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -47,10 +50,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="CheckBtn" destination="Zv5-vl-bgd" id="QAd-rk-nbg"/>
-                <outlet property="DeleteBtn" destination="ZPD-Tj-YpP" id="f3X-aL-0SQ"/>
+                <outlet property="DeleteBtn" destination="ZPD-Tj-YpP" id="fjZ-n5-tnS"/>
                 <outlet property="ListLabel" destination="buQ-Me-bx4" id="UVx-ly-azJ"/>
             </connections>
-            <point key="canvasLocation" x="272.46376811594206" y="125.22321428571428"/>
+            <point key="canvasLocation" x="-7189.6875" y="-2090"/>
         </tableViewCell>
     </objects>
     <resources>

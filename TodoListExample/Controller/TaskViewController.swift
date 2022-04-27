@@ -9,21 +9,28 @@ import UIKit
 
 class TaskViewController: UIViewController {
 
-    var todayList = [String]()
-    var nextList = [String]()
-    
+    var dayHistory = [String]()
+    var todayList = ["123", "456", "789"]
+    var nextList = ["abc", "def", "ghi"]
     var sectionHeader : [String] = ["Today", "Upcoming"]
+
+    
     @IBOutlet weak var taskTableView: UITableView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setup()
+        
     }
 }
 
 extension TaskViewController {
     func setup() {
+        
+        UserDefaults.standard.setValue(todayList, forKey: "todayList")
+        
+        UserDefaults.standard.setValue(nextList, forKey: "nextList")
+        
         taskTableView.delegate = self
         taskTableView.dataSource = self
         
@@ -41,12 +48,20 @@ extension TaskViewController {
 }
 
 // MARK: - UITableViewDelegate
-
+extension TaskViewController {
+    
+    func loadList() {
+        
+        guard let saveList = UserDefaults.standard.object(forKey: "todayList") as? [String] else { return }
+        
+        todayList = saveList
+    }
+}
 extension TaskViewController: UITableViewDelegate {
     
     // cell 간격
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
 }
  
@@ -57,30 +72,31 @@ extension TaskViewController: UITableViewDataSource {
     
     // section마다의 cell개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return todayList.count
     }
     
     // cell에 대한 정보
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        cell.ListLabel.text = "👻 Weekly iOS Meeting"
+        cell.ListLabel.text = todayList[indexPath.row]
         cell.ListLabel.sizeToFit()
+        
+        
+        cell.DeleteBtn.addTarget(self, action: #selector(reload), for: .touchUpInside)
         return cell
-    }
     
+    }
     
     // MARK - Section
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
  
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
        
         let myLabel = UILabel()
@@ -93,6 +109,10 @@ extension TaskViewController: UITableViewDataSource {
         return headerView
     }
     
+    @objc func reload() {
+        loadList()
+        self.taskTableView.reloadData()
+    }
+    
 }
-
 
