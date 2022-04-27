@@ -21,6 +21,10 @@
                         <rect key="frame" x="10" y="10" width="20" height="30"/>
                         <color key="tintColor" systemColor="systemPinkColor"/>
                         <state key="normal" image="circle" catalog="system"/>
+                        <connections>
+                            <action selector="checkBtnCilcked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PvH-3S-jfH"/>
+                            <action selector="checkBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W6Z-e2-Nvh"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👻 Weekly iOS Meeting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buQ-Me-bx4">
                         <rect key="frame" x="60" y="14.5" width="181" height="21"/>
@@ -36,6 +40,18 @@
                             <action selector="deleteBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dvL-Q1-71x"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-fX-sNk">
+                        <rect key="frame" x="60" y="24" width="181" height="2"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufo-mw-rwy">
+                        <rect key="frame" x="53" y="11" width="253" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ZPD-Tj-YpP" secondAttribute="trailing" constant="10" id="7Os-pY-z41"/>
@@ -52,6 +68,7 @@
                 <outlet property="CheckBtn" destination="Zv5-vl-bgd" id="QAd-rk-nbg"/>
                 <outlet property="DeleteBtn" destination="ZPD-Tj-YpP" id="fjZ-n5-tnS"/>
                 <outlet property="ListLabel" destination="buQ-Me-bx4" id="UVx-ly-azJ"/>
+                <outlet property="StraigthView" destination="dvL-fX-sNk" id="Sn9-3b-Jwv"/>
             </connections>
             <point key="canvasLocation" x="-7189.6875" y="-2090"/>
         </tableViewCell>
@@ -61,6 +78,9 @@
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -10,8 +10,8 @@ import UIKit
 class TaskViewController: UIViewController {
 
     var dayHistory = [String]()
-    var todayList = ["123", "456", "789"]
-    var nextList = ["abc", "def", "ghi"]
+    var todayList = ["인설실 과제하기", "데통 과제하기", "없서"]
+    var nextList = ["영화보기", "운동하기", "게임하기"]
     var sectionHeader : [String] = ["Today", "Upcoming"]
 
     
@@ -79,11 +79,20 @@ extension TaskViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        cell.ListLabel.text = todayList[indexPath.row]
+        
+        switch indexPath.section {
+        case 0:
+            cell.ListLabel.text = todayList[indexPath.row]
+        case 1:
+            cell.ListLabel.text = nextList[indexPath.row]
+        
+        default:
+            return UITableViewCell()
+        }
+        
         cell.ListLabel.sizeToFit()
-        
-        
         cell.DeleteBtn.addTarget(self, action: #selector(reload), for: .touchUpInside)
+        
         return cell
     
     }
