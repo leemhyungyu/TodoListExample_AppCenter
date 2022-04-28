@@ -18,6 +18,7 @@
 		2C40C6B427FEAE0D00AA536D /* TodoListExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40C6B327FEAE0D00AA536D /* TodoListExampleUITests.swift */; };
 		2CAFE9B427FEE76800C2E0CB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFE9B227FEE76800C2E0CB /* TableViewCell.swift */; };
 		2CAFE9B527FEE76800C2E0CB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFE9B327FEE76800C2E0CB /* TableViewCell.xib */; };
+		2CF6BA38281A8AD900C7D072 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6BA37281A8AD900C7D072 /* Todo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		2C40C6B527FEAE0D00AA536D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CAFE9B227FEE76800C2E0CB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		2CAFE9B327FEE76800C2E0CB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		2CF6BA37281A8AD900C7D072 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2C40C69227FEAE0B00AA536D /* TaskViewController.swift */,
+				2CF6BA37281A8AD900C7D072 /* Todo.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C40C69327FEAE0B00AA536D /* TaskViewController.swift in Sources */,
+				2CF6BA38281A8AD900C7D072 /* Todo.swift in Sources */,
 				2C40C68F27FEAE0B00AA536D /* AppDelegate.swift in Sources */,
 				2CAFE9B427FEE76800C2E0CB /* TableViewCell.swift in Sources */,
 				2C40C69927FEAE0B00AA536D /* TodoListExample.xcdatamodeld in Sources */,

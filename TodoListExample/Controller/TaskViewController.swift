@@ -16,13 +16,25 @@ class TaskViewController: UIViewController {
 
     
     @IBOutlet weak var taskTableView: UITableView!
+    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var isTodayBtn: UIButton!
+    @IBOutlet weak var addBtn: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
     }
+    
+    @IBAction func isTodayBtnClicked(_ sender: UIButton) {
+        isTodayBtn.isSelected = !isTodayBtn.isSelected
+    }
+    
 }
+
+
+
 
 extension TaskViewController {
     func setup() {
@@ -47,16 +59,20 @@ extension TaskViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
 extension TaskViewController {
     
     func loadList() {
         
-        guard let saveList = UserDefaults.standard.object(forKey: "todayList") as? [String] else { return }
+        guard let savedTodayList = UserDefaults.standard.object(forKey: "todayList") as? [String] else { return }
         
-        todayList = saveList
+        guard let savedNextList = UserDefaults.standard.object(forKey: "nextList") as? [String] else { return }
+        
+        todayList = savedTodayList
+        nextList = savedNextList
     }
 }
+
+// MARK: - UITableViewDelegate
 extension TaskViewController: UITableViewDelegate {
     
     // cell 간격
@@ -72,7 +88,12 @@ extension TaskViewController: UITableViewDataSource {
     
     // section마다의 cell개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todayList.count
+        
+        if section == 0 {
+            return todayList.count
+        } else {
+            return nextList.count
+        }
     }
     
     // cell에 대한 정보
@@ -125,3 +146,73 @@ extension TaskViewController: UITableViewDataSource {
     
 }
 
+class TableViewCell: UITableViewCell {
+
+    @IBOutlet weak var CheckBtn: UIButton!
+    @IBOutlet weak var DeleteBtn: UIButton!
+    @IBOutlet weak var ListLabel: UILabel!
+    @IBOutlet weak var StraigthView: UIView!
+    
+  
+    @IBAction func checkBtnClicked(_ sender: UIButton) {
+        let size = CGRect(x: 60, y: 30, width: ListLabel.frame.width, height: 2) // 나중에 오토레이아웃 설정
+        self.StraigthView.frame = size
+        
+        CheckBtn.isSelected = !CheckBtn.isSelected
+        let isDone = CheckBtn.isSelected
+
+        if isDone {
+            ListLabel.textColor = .gray
+            DeleteBtn.isHidden = false
+            StraigthView.isHidden = false
+        } else {
+            ListLabel.textColor = .black
+            DeleteBtn.isHidden = true
+            StraigthView.isHidden = true
+        }
+    }
+    
+    @IBAction func deleteBtnClicked(_ sender: UIButton) {
+        
+        guard var todayList = UserDefaults.standard.object(forKey: "todayList") as? [String] else { return }
+        guard var nextList = UserDefaults.standard.object(forKey: "nextList") as? [String] else { return }
+        guard let text = ListLabel.text else { return }
+        
+        if todayList.contains(text) {
+            if let index = todayList.firstIndex(of: text) {
+                todayList.remove(at: index)
+            }
+        } else {
+            if let index = nextList.firstIndex(of: text) {
+                nextList.remove(at: index)
+            }
+        }
+        
+        UserDefaults.standard.setValue(todayList, forKey: "todayList")
+        UserDefaults.standard.setValue(nextList, forKey: "nextList")
+    }
+    
+    @IBAction func checkBtnCilcked(_ sender: UIButton) {
+        //CheckBtn.isHidden = true
+        
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setUp()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        // Configure the view for the selected state
+    }
+}
+
+extension TableViewCell {
+    func setUp() {
+        DeleteBtn.isHidden = true
+        StraigthView.isHidden = true
+        self.selectionStyle = .none
+        self.StraigthView.isHidden = true
+    }
+}

@@ -20,11 +20,62 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70U-Z2-LZa">
+                                <rect key="frame" x="0.0" y="753" width="414" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I want to ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u8C-iO-dwc">
+                                        <rect key="frame" x="8" y="13" width="290" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcx-Zz-uJy">
+                                        <rect key="frame" x="308" y="12.5" width="45" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="AtG-1Y-C6R"/>
+                                            <constraint firstAttribute="height" constant="35" id="Hlv-Pv-NAK"/>
+                                        </constraints>
+                                        <state key="normal" title="today">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="isTodayBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zIT-dq-YwO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnD-ij-9aw">
+                                        <rect key="frame" x="363" y="12.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="V2f-ks-wMR"/>
+                                            <constraint firstAttribute="width" constant="35" id="d6d-o0-mWw"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="plus" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" weight="bold"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                <constraints>
+                                    <constraint firstItem="Lcx-Zz-uJy" firstAttribute="centerY" secondItem="70U-Z2-LZa" secondAttribute="centerY" id="7Vh-Ev-LQn"/>
+                                    <constraint firstItem="u8C-iO-dwc" firstAttribute="centerY" secondItem="70U-Z2-LZa" secondAttribute="centerY" id="XGq-ik-Njc"/>
+                                    <constraint firstItem="Lcx-Zz-uJy" firstAttribute="leading" secondItem="u8C-iO-dwc" secondAttribute="trailing" constant="10" id="k1z-e0-aDF"/>
+                                    <constraint firstItem="VnD-ij-9aw" firstAttribute="centerY" secondItem="70U-Z2-LZa" secondAttribute="centerY" id="lmj-sa-Xvq"/>
+                                    <constraint firstAttribute="trailing" secondItem="VnD-ij-9aw" secondAttribute="trailing" constant="16" id="mW5-Sw-ZPV"/>
+                                    <constraint firstAttribute="height" constant="60" id="nYx-nh-Tdu"/>
+                                    <constraint firstItem="u8C-iO-dwc" firstAttribute="leading" secondItem="70U-Z2-LZa" secondAttribute="leading" constant="8" id="xBh-h9-hn5"/>
+                                    <constraint firstItem="VnD-ij-9aw" firstAttribute="leading" secondItem="Lcx-Zz-uJy" secondAttribute="trailing" constant="10" id="ycZ-rb-Flc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HVj-7D-rMS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6lc-ep-ROb"/>
+                            <constraint firstItem="70U-Z2-LZa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8wD-ym-Ved"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="70U-Z2-LZa" secondAttribute="bottom" id="Fd0-IG-XGI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="70U-Z2-LZa" secondAttribute="trailing" id="LIZ-8b-qiP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HVj-7D-rMS" secondAttribute="trailing" id="Qp0-XF-oIa"/>
                             <constraint firstItem="HVj-7D-rMS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tj8-zk-R8l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HVj-7D-rMS" secondAttribute="bottom" id="vYb-vm-3I0"/>
@@ -32,12 +83,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" image="checkmark.circle.fill" catalog="system" id="Von-U1-BFp"/>
                     <connections>
+                        <outlet property="addBtn" destination="VnD-ij-9aw" id="Xjg-Oz-dnp"/>
+                        <outlet property="inputTextField" destination="u8C-iO-dwc" id="fNs-47-QSW"/>
+                        <outlet property="isTodayBtn" destination="Lcx-Zz-uJy" id="KcE-f3-2HO"/>
                         <outlet property="taskTableView" destination="HVj-7D-rMS" id="tVx-Qy-WiB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-294" y="896"/>
+            <point key="canvasLocation" x="-294.20289855072468" y="895.98214285714278"/>
         </scene>
         <!--Settings-->
         <scene sceneID="jtc-oW-4YZ">
@@ -138,8 +192,15 @@
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

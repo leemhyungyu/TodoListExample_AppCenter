@@ -17,10 +17,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zv5-vl-bgd">
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zv5-vl-bgd">
                         <rect key="frame" x="10" y="10" width="20" height="30"/>
                         <color key="tintColor" systemColor="systemPinkColor"/>
                         <state key="normal" image="circle" catalog="system"/>
+                        <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                         <connections>
                             <action selector="checkBtnCilcked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PvH-3S-jfH"/>
                             <action selector="checkBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W6Z-e2-Nvh"/>
@@ -74,6 +75,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="opaqueSeparatorColor">
