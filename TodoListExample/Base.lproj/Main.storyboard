@@ -71,6 +71,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="HVj-7D-rMS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6lc-ep-ROb"/>
                             <constraint firstItem="70U-Z2-LZa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8wD-ym-Ved"/>
@@ -80,16 +81,25 @@
                             <constraint firstItem="HVj-7D-rMS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tj8-zk-R8l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HVj-7D-rMS" secondAttribute="bottom" id="vYb-vm-3I0"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Lqn-sc-whM" appends="YES" id="1n6-l3-AGx"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" image="checkmark.circle.fill" catalog="system" id="Von-U1-BFp"/>
                     <connections>
                         <outlet property="addBtn" destination="VnD-ij-9aw" id="Xjg-Oz-dnp"/>
                         <outlet property="inputTextField" destination="u8C-iO-dwc" id="fNs-47-QSW"/>
+                        <outlet property="inputViewBottom" destination="Fd0-IG-XGI" id="iY1-bV-dGG"/>
                         <outlet property="isTodayBtn" destination="Lcx-Zz-uJy" id="KcE-f3-2HO"/>
                         <outlet property="taskTableView" destination="HVj-7D-rMS" id="tVx-Qy-WiB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Lqn-sc-whM">
+                    <connections>
+                        <action selector="tapBG:" destination="BYZ-38-t0r" id="l4R-oQ-mOt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-294.20289855072468" y="895.98214285714278"/>
         </scene>

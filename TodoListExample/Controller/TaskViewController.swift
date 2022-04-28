@@ -19,17 +19,29 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var isTodayBtn: UIButton!
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var inputViewBottom: NSLayoutConstraint!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setup()
+        
     }
     
     @IBAction func isTodayBtnClicked(_ sender: UIButton) {
         isTodayBtn.isSelected = !isTodayBtn.isSelected
     }
+    
+    @IBAction func tapBG(_ sender: Any) {
+        
+        inputTextField.resignFirstResponder()
+    }
+    
     
 }
 
@@ -60,6 +72,19 @@ extension TaskViewController {
 }
 
 extension TaskViewController {
+    
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        // [x] TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            inputViewBottom.constant = adjustmentHeight
+        } else {
+            inputViewBottom.constant = 0
+        }
+    }
     
     func loadList() {
         
