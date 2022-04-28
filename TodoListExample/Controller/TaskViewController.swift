@@ -42,10 +42,28 @@ class TaskViewController: UIViewController {
         inputTextField.resignFirstResponder()
     }
     
-    
+    @IBAction func addBtnClicked(_ sender: UIButton) {
+        
+        guard let detail = inputTextField.text, detail.isEmpty == false else { return }
+        
+        
+        if isTodayBtn.isSelected {
+            guard var savedTodayList = UserDefaults.standard.object(forKey: "todayList") as? [String] else { return }
+            
+            savedTodayList.append(inputTextField.text!)
+            
+            UserDefaults.standard.setValue(savedTodayList, forKey: "todayList")
+        } else {
+            guard var savedNextList = UserDefaults.standard.object(forKey: "nextList") as? [String] else { return }
+            savedNextList.append(inputTextField.text!)
+            UserDefaults.standard.setValue(savedNextList, forKey: "nextList")
+        }
+        
+        reload()
+        inputTextField.text = ""
+        isTodayBtn.isSelected = false
+    }
 }
-
-
 
 
 extension TaskViewController {
@@ -67,7 +85,7 @@ extension TaskViewController {
         
         // footer 삭제.
         taskTableView.sectionFooterHeight = 0
-        
+
     }
 }
 
