@@ -41,10 +41,13 @@
                             <action selector="deleteBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dvL-Q1-71x"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-fX-sNk">
-                        <rect key="frame" x="60" y="24" width="181" height="2"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-fX-sNk">
+                        <rect key="frame" x="40" y="24.5" width="250" height="1"/>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="250" id="ULk-gA-ZJ8"/>
+                            <constraint firstAttribute="height" constant="1" id="yol-C2-VAv"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufo-mw-rwy">
                         <rect key="frame" x="53" y="11" width="253" height="21"/>
@@ -60,6 +63,8 @@
                     <constraint firstAttribute="bottom" secondItem="Zv5-vl-bgd" secondAttribute="bottom" constant="10" id="NtV-fK-cND"/>
                     <constraint firstItem="Zv5-vl-bgd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RXy-FO-Jcz"/>
                     <constraint firstItem="Zv5-vl-bgd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dV7-I3-Abr"/>
+                    <constraint firstItem="dvL-fX-sNk" firstAttribute="leading" secondItem="Zv5-vl-bgd" secondAttribute="leading" constant="30" id="dsM-8M-7RE"/>
+                    <constraint firstItem="dvL-fX-sNk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lng-J7-DTC"/>
                     <constraint firstItem="buQ-Me-bx4" firstAttribute="leading" secondItem="Zv5-vl-bgd" secondAttribute="trailing" constant="30" id="oXU-oI-8KT"/>
                     <constraint firstItem="buQ-Me-bx4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rgP-W3-iSw"/>
                 </constraints>
