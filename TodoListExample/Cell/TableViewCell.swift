@@ -33,10 +33,7 @@ class TableViewCell: UITableViewCell {
         deleteButtonTapHandler?()
     }
     
-    @IBAction func checkBtnCilcked(_ sender: UIButton) {
-        //CheckBtn.isHidden = true
-        
-    }
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         setUp()

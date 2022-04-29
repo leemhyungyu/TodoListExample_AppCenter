@@ -11,11 +11,7 @@ var deleteIndex: Int = 0
 
 class TaskViewController: UIViewController {
 
-    var dayHistory = [String]()
-    var todayList = [String]()
-    var nextList = [String]()
     var sectionHeader : [String] = ["Today", "Upcoming"]
-
     
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -33,6 +29,11 @@ class TaskViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        todoListViewModel.loadTasks()
+        taskTableView.reloadData()
         
     }
     
@@ -44,26 +45,24 @@ class TaskViewController: UIViewController {
         inputTextField.resignFirstResponder()
     }
     
+    // add버튼을 클릭했을때 실행되는 함수(
     @IBAction func addBtnClicked(_ sender: UIButton) {
         
         guard let detail = inputTextField.text, detail.isEmpty == false else { return }
         
         let todo = TodoManager.shared.createTodo(detail: detail, isToday: isTodayBtn.isSelected)
+        
         todoListViewModel.addTodo(todo)
         taskTableView.reloadData()
         inputTextField.text = ""
         isTodayBtn.isSelected = false
+        
     }
 }
 
 
 extension TaskViewController {
     func setup() {
-        
-        UserDefaults.standard.setValue(todayList, forKey: "todayList")
-        
-        UserDefaults.standard.setValue(nextList, forKey: "nextList")
-        
         taskTableView.delegate = self
         taskTableView.dataSource = self
         
@@ -83,7 +82,7 @@ extension TaskViewController {
     
     @objc private func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
-        // [x] TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         if noti.name == UIResponder.keyboardWillShowNotification {
@@ -118,9 +117,6 @@ extension TaskViewController: UITableViewDataSource {
             return todoListViewModel.upcompingTodos.count
         }
     }
-    
-    
-    
     // cell에 대한 정보
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -141,14 +137,13 @@ extension TaskViewController: UITableViewDataSource {
             self.todoListViewModel.updateTodo(todo)
             self.taskTableView.reloadData()
         }
-        
+
         cell.deleteButtonTapHandler = {
             self.todoListViewModel.deleteTodo(todo)
             self.taskTableView.reloadData()
         }
         
         return cell
-    
     }
     
     // MARK - Section
