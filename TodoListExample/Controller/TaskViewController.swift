@@ -25,7 +25,10 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // NotificationCenter에 옵저버 등록
+        // 옵저버들이 이벤트를 관찰했을 때 adjustInputView메소드 실행
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setup()
@@ -41,7 +44,9 @@ class TaskViewController: UIViewController {
         isTodayBtn.isSelected = !isTodayBtn.isSelected
     }
     
+    // 빈 공간 클릭시 키보드를 내려줌
     @IBAction func tapBG(_ sender: Any) {
+        // 현재 키보드가 올라와있는 텍스트 필드의 상태를 포기하게 만듬
         inputTextField.resignFirstResponder()
     }
     
@@ -60,8 +65,8 @@ class TaskViewController: UIViewController {
     }
 }
 
-
 extension TaskViewController {
+    
     func setup() {
         taskTableView.delegate = self
         taskTableView.dataSource = self
@@ -76,19 +81,25 @@ extension TaskViewController {
         // footer 삭제.
         taskTableView.sectionFooterHeight = 0
     }
-}
-
-extension TaskViewController {
     
+    // textField를 눌렀을 때 키보드가 올라가거나 내려갈때 실행되는 함수
+    // Notification -> NotificationCenter를 통해 정보를 저장하기 위한 구조체.
+    // Notification.name -> 전달하고자하는 notification의 이름
+    // Notification.userInfo ->
     @objc private func adjustInputView(noti: Notification) {
+        
+        // 옵저버로부터 받아온 정보가 있는지 확인
         guard let userInfo = noti.userInfo else { return }
         
+        // userInfo 딕셔너리에 UIResponder.keyboardFrameEndUserInfoKey 키 값을 입력하게 되면
+        // 반환하는 값은 키보드의 사이즈임
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
+        // 키보드가 올라오는 이벤트일 경우
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
             inputViewBottom.constant = adjustmentHeight
-        } else {
+        } else { // 키보드가 내려가는 이벤트일 경우
             inputViewBottom.constant = 0
         }
     }
@@ -117,6 +128,7 @@ extension TaskViewController: UITableViewDataSource {
             return todoListViewModel.upcompingTodos.count
         }
     }
+    
     // cell에 대한 정보
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -124,20 +136,21 @@ extension TaskViewController: UITableViewDataSource {
         
         var todo: Todo
         
+        // today
         if indexPath.section == 0 {
             todo = todoListViewModel.todayTodos[indexPath.row]
-        } else {
+        } else { // upcomming
             todo = todoListViewModel.upcompingTodos[indexPath.row]
         }
         cell.updateUI(todo: todo)
-        cell.ListLabel.sizeToFit()
         
+        // isDone값이 인자로 들어와서 실행
         cell.doneButtonTapHandler = { isDone in
             todo.isDone = isDone
             self.todoListViewModel.updateTodo(todo)
             self.taskTableView.reloadData()
         }
-
+        
         cell.deleteButtonTapHandler = {
             self.todoListViewModel.deleteTodo(todo)
             self.taskTableView.reloadData()

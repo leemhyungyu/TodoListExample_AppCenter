@@ -53,11 +53,9 @@ class TodoManager {
         saveTodo()
     }
     
+    //
     func saveTodo() {
-        UserDefaults.standard.set(
-            try? PropertyListEncoder().encode(todos),
-            forKey: "Todos"
-        )
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(todos), forKey: "Todos")
     }
     
     func retrieveTodo() {
